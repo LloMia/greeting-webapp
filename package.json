@@ -1,0 +1,23 @@
+{
+  "name": "back-end-greeting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LloMia/back-end-greeting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LloMia/back-end-greeting/issues"
+  },
+  "homepage": "https://github.com/LloMia/back-end-greeting#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

@@ -19,5 +19,8 @@
   "homepage": "https://github.com/LloMia/back-end-greeting#readme",
   "dependencies": {
     "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

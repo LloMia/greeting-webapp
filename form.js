@@ -13,16 +13,22 @@ app.engine('handlebars', exphbs({
 }));
 
 app.set('view engine', 'handlebars')
-
 app.get('/', function(req, res) {
-            res.render('index')
-        });
-app.post('/', function(req, res){
-//  var greet = req.body.name;
-  console.log(req.body);
+  res.render('index');
 })
-        var server = app.listen(3000, function() {
-            var host = server.address().address;
-            var port = server.address().port;
-            console.log('Example app listening on port 3000!')
-        })
+
+app.post('/', function(req, res) {
+  var msg = "";
+    var name = req.body.name;
+    var info = 'Hello, ' + name;
+  var greetName = {
+    msg:info
+  }
+
+    res.render('index', greetName);
+});
+var server = app.listen(3000, function() {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log('Example app listening on port 3000!')
+})

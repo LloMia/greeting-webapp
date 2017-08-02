@@ -1,16 +1,30 @@
-
-  <head>
+<head>
     <meta charset="utf-8">
     <title></title>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>GREETED NAMES</h1>
 
     <form class="" action="/" method="post">
-      <input type="text" name="name" placeholder="Type your name">
-      <button type="submit" id="button">Greet</button>
+        <input type="text" name="name" placeholder="Type your name"><br><br>
+        <button type="submit" id="button">Greet</button><br><br><br><br>
+        <div id="radio">
+
+            <input type="radio" name="language" value="Setswana" id="Setswana">Setswana
+            <input type="radio" name="language" value="French" id="French">French
+            <input type="radio" name="language" value="english" id="english">English
+
+        </div>
+
     </form>
+    <a href="/greeted">greeted Names</a>
 
-<p>{{msg}}</p>    
-
-  </body>
+    <p>{{msg}}</p>
+    <p>{{counter}}</p>
+    <ul>
+        {{#each names}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ul>
+</body>

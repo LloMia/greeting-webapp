@@ -1,9 +1,13 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var app = express();
 var names = [];
 var count = 0;
+mongoose.connect('mongodb://localhost/test', function(){
+  console.log('we are connected');
+});
 var namesGreeted = {};
 
 app.use(bodyParser.urlencoded({

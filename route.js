@@ -16,18 +16,18 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 
-app.use(bodyParser.json())
- const greet = function(req, res){
-   var name = req.param.name
-     nameList.push(name)
-    console.log('Hello, ' + name + '!')
-
-
-}
+// app.use(bodyParser.json())
+//  const greet = function(req, res){
+//    var name = req.params.name
+//      nameList.push(name)
+//     console.log('Hello, ' + name + '!')
+//
+//
+// }
 
 app.get('/greeting', function(req, res) {
 
-  var name = req.param.name
+  var name = req.params.name
 
   nameList.push(name)
   console.log(nameList);

@@ -3,7 +3,7 @@ module.exports = function(mongoUrl){
     mongoose.Promise = global.Promise;
     mongoose.connect(mongoUrl);
 
-    const Name = mongoose.model('Name', {
+    const Name = mongoose.model('Names', {
         name : String,
         timesGreeted : Number
     });

@@ -32,11 +32,11 @@
 
 
 module.exports = function(models){
+  var names = [];
 const greetLang = function(req, res) {
   var name = req.body.name;
     var language = req.body.language;
     var greetName = "";
-    var names = [];
 
 
         names.push(name);
@@ -73,7 +73,7 @@ const greetLang = function(req, res) {
  const indexes = function(req, res) {
 
     res.render('index', {
-        names: names
+        name: names
     })
 
 }

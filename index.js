@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
     res.redirect('index');
 })
 app.get('/index', routes.greetLang);
-app.get('/index/greeted', routes.indexes);
+app.get('/greeted', routes.indexes);
 app.post('/index', routes.greetLang);
 
 

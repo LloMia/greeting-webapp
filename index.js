@@ -1,13 +1,13 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 var app = express();
 var names = [];
 var count = 0;
-mongoose.connect('mongodb://localhost/test', function(){
-  console.log('we are connected');
-});
+const Models = require('./models');
+
 var namesGreeted = {};
 
 app.use(bodyParser.urlencoded({
@@ -23,6 +23,22 @@ app.get('/', function(req, res) {
     res.render('index');
 })
 
+
+
+function greet(names, counts){
+
+  var StoreName = new Models.Names ({
+    name : names,
+    timesGreeted : count
+  });
+  StoreName.save(function(err){
+    if (err){
+      return err;
+    }
+  })
+
+}
+
 app.post('/', function(req, res) {
   var name = req.body.name;
     var language = req.body.language;
@@ -36,15 +52,20 @@ app.post('/', function(req, res) {
         if (language === "english") {
             count++;
             greetName = "hello, " + name + "!";
+            greet(names);
         } else if (language === "Setswana") {
             count++;
             greetName = "Dumela, " + name + "!";
+              greet(names);
         } else if (language === "French") {
             count++;
             greetName = "Bonjour, " + name + "!";
+              greet(names);
         }
 }
-    console.log(names);
+
+
+    
     res.render('index', {
         msg: greetName
     });
@@ -62,13 +83,17 @@ app.get('/counter', function(req, res) {
   var name = req.body.name;
       function counter(input) {
         return input == name
+        greet()
     }
     var countCal = names.filter(counter).length;
-    console.log(namesGreeted)
+    console.log(countCal)
 
-    res.render('index', {counter : namesGreeted.length});
+    res.render('index', {counter : countCal});
 })
 
+const mongoURL = process.env.MONGO_DB_URL || "'mongodb://localhost/test'";
+
+mongoose.connect(mongoURL);
 
 
 var server = app.listen(process.env.PORT || 3000, function() {

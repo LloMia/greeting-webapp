@@ -2,7 +2,7 @@ const assert = require('assert')
 // const Models = require('../models');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/namesGreeted');
+mongoose.connect('mongodb://localhost/Greeted');
 
 const namesGreeted = mongoose.model('name', {
     name: String
@@ -15,7 +15,7 @@ describe('models should be able to', function() {
         // var models = Models('mongodb://localhost/namesGreeted');
 
         var name = new namesGreeted({
-            name: 'Cale'
+            name: "Loyiso"
         });
 
         name.save().then(function() {
@@ -25,4 +25,21 @@ describe('models should be able to', function() {
 
 
     });
+
+    it('should not duplicate vulues', function(done){
+
+      var name = new namesGreeted({
+          name: "Loyiso"
+      });
+
+      name.save().then(function(err) {
+
+        name.save().then(function(err) {
+          assert.ok(err, 'should give error for duplicate')
+          done()
+        });
+
+
+      })
+    })
 })

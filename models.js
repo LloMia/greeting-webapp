@@ -1,10 +1,17 @@
 const mongoose = require('mongoose');
-module.exports = function(mongoUrl){
-  mongoose.connect(mongoUrl);
+const mongoURL = process.env.MONGO_DB_URL || "'mongodb://localhost/namesGreeted'";
 
-  const namesGreeted = mongoose.model('name', {name : String});
+mongoose.connect(mongoURL, {
+  useMongoClient : true
+});
 
-  return {
-    namesGreeted
-  }
-}
+
+
+
+
+
+
+  exports.Names = mongoose.model("Names", {
+    name : String,
+    timesGreeted : Number
+  });

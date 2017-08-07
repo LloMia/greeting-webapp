@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
-const mongoURL = process.env.MONGO_DB_URL || "'mongodb://localhost/namesGreeted'";
+module.exports = function(mongoUrl){
+    mongoose.Promise = global.Promise;
+    mongoose.connect(mongoUrl);
 
-mongoose.connect(mongoURL, {
-  useMongoClient : true
-});
+    const Name = mongoose.model('Name', {
+        name : String,
+        timesGreeted : Number
+    });
+
+    return {
+        Name
+    };
+
+};
 
 
 
@@ -11,7 +20,25 @@ mongoose.connect(mongoURL, {
 
 
 
-  exports.Names = mongoose.model("Names", {
-    name : String,
-    timesGreeted : Number
-  });
+
+
+
+
+
+// const mongoose = require('mongoose');
+//
+//
+// mongoose.connect(mongoURL, {
+//   useMongoClient : true
+// });
+//
+//
+//
+//
+//
+//
+//
+//   exports.Names = mongoose.model("Names", {
+//     name : String,
+//     // timesGreeted : Number
+//   });

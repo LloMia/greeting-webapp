@@ -1,5 +1,5 @@
 const assert = require('assert')
-// const Models = require('../models');
+ const Models = require('../models');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/Greeted');

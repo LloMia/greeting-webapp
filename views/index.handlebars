@@ -1,12 +1,15 @@
 <head>
+<link rel="stylesheet" href="/style.css">
     <meta charset="utf-8">
     <title></title>
 </head>
 
-<body>
-    <h1>GREETED NAMES</h1>
 
-    <form class="" action="/index" method="post">
+<body>
+    <h1>GREETED NAMES</h1><br>
+    <a href="/index/greeted">greeted Names</a><br>
+
+  <br>  <form class="" action="/index" method="post">
         <input type="text" name="name" placeholder="Type your name"><br><br>
         <button type="submit" id="button">Greet</button><br><br><br><br>
         <div id="radio">
@@ -18,13 +21,11 @@
         </div>
 
     </form>
-    <a href="/greeted">greeted Names</a>
+
 
     <p>{{msg}}</p>
     <p>{{counter}}</p>
-    <ul>
-        {{#each name}}
-            <li>{{this}}</li>
-        {{/each}}
-    </ul>
+
+
+
 </body>

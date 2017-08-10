@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="/style.css">
+<h1>Greeted Names</h1>
+
+<form action="index.html" method="post">
+
+  {{#each name}}
+  <a href="/counter/{{this}}">{{this}}<br></a>
+  {{/each}}
+</form>

@@ -12,6 +12,7 @@ mongoose.connect('mongodb://localhost/namesGreeted', function(){
   console.log('we are connected');
 });
 
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -22,12 +23,16 @@ app.engine('handlebars', exphbs({
 
 app.set('view engine', 'handlebars');
 
-app.get('/', function(req, res) {
-    res.redirect('index');
-})
+// app.get('/', function(req, res) {
+    // res.redirect('/index');
+// })
+app.get('/index/greeted', routes.indexes);
 app.get('/index', routes.greetLang);
-app.get('/greeted', routes.indexes);
+app.post('/index/greeted', routes.indexes);
 app.post('/index', routes.greetLang);
+app.get('/counter/:name', routes.count);
+app.post('/counter/:greetedPerson', routes.count);
+
 
 
 

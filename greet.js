@@ -4,7 +4,9 @@ module.exports = function(models) {
         var name = req.body.name;
         var language = req.body.language;
         var greetName = "";
-        names.push(name);
+
+
+
 
         if (name) {
             models.Name.findOne({
@@ -18,17 +20,18 @@ module.exports = function(models) {
                     user.timesGreeted = user.timesGreeted + 1
                     if (language === "english") {
                         // count++;
-                        greetName = "hello, " + name + "!";
+                        greetName = "hello, " + user.name + "!";
 
                     } else if (language === "Setswana") {
                         // count++;
-                        greetName = "Dumela, " + name + "!";
+                        greetName = "Dumela, " + user.name + "!";
 
                     } else if (language === "French") {
                         // count++;
-                        greetName = "Bonjour, " + name + "!";
+                        greetName = "Bonjour, " + user.name + "!";
 
                     }
+
 
                     user.save(function(err, results) {
                         if (err) {
@@ -54,15 +57,15 @@ module.exports = function(models) {
 
                         if (language === "english") {
                             // count++;
-                            greetName = "hello, " + name + "!";
+                            greetName = "hello, " + user.name + "!";
 
                         } else if (language === "Setswana") {
                             // count++;
-                            greetName = "Dumela, " + name + "!";
+                            greetName = "Dumela, " + user.name + "!";
 
                         } else if (language === "French") {
                             // count++;
-                            greetName = "Bonjour, " + name + "!";
+                            greetName = "Bonjour, " + user.name + "!";
                         }
 
                         res.render('index', {
@@ -82,37 +85,59 @@ module.exports = function(models) {
 
 
     const indexes = function(req, res) {
-
-        res.render('greeted', {
-            name: names
-        })
-
+models.Name.find({},function(err, UrlUser) {
+    if (err) {
+        return done(err);
     }
 
+        res.render('greeted', {
+            name: UrlUser
+        });
+    });
+  }
+
     const count = function(req, res) {
-        var greetCount;
-        var name = req.params.name
+
+        // var name = req.params.name
 
 
         models.Name.findOne({
             name: req.params.name
+
         }, function(err, UrlUser) {
+          console.log('UrlUser', UrlUser);
+
+
             if (err) {
-                return done(err)
-            } else if (UrlUser) {
-                greetCount = "Hello, " + UrlUser.name + ". you've been greeeted " + UrlUser.timesGreeted + "time(s)"
-                console.log(greetCount);
+                return done(err);
             }
+             if (UrlUser) {
+              var  greetCount = "Hello, " + UrlUser.name + ". you've been greeeted " + UrlUser.timesGreeted + "time(s)"
+            }
+            // console.log(greetCount);
             res.render('counter', {
                 counter: greetCount
             });
 
         });
     }
+
+
+    const clear = function(req, res){
+    models.Name.remove(function(err){
+      if (err) {
+
+        return done(err);
+
+      }
+      res.render('greeted')
+    })
+    }
     return {
         greetLang,
         indexes,
-        count
+        count,
+        clear
 
     }
 }

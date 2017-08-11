@@ -31,8 +31,11 @@ app.get('/index', routes.greetLang);
 app.post('/index/greeted', routes.indexes);
 app.post('/index', routes.greetLang);
 app.get('/counter/:name', routes.count);
-app.post('/counter/:greetedPerson', routes.count);
+app.post('/counter/:name', routes.count);
 
+
+app.get('/reset', routes.clear);
+app.post('/reset', routes.clear);
 
 
 

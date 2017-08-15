@@ -12,7 +12,7 @@ describe('models should be able to', function() {
 
     it('store names to MongoBD', function(done) {
 
-        // var models = Models('mongodb://localhost/namesGreeted');
+        var models = Models('mongodb://localhost/namesGreeted');
 
         var name = new namesGreeted({
             name: "Loyiso"

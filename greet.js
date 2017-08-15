@@ -98,7 +98,7 @@ models.Name.find({},function(err, UrlUser) {
 
     const count = function(req, res) {
 
-        // var name = req.params.name
+        var name = req.params.name
 
 
         models.Name.findOne({

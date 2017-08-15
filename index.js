@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost/namesGreeted', function(){
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
 
 app.engine('handlebars', exphbs({
@@ -28,8 +28,8 @@ app.set('view engine', 'handlebars');
 // })
 app.get('/index/greeted', routes.indexes);
 app.get('/index', routes.greetLang);
-app.post('/index/greeted', routes.indexes);
 app.post('/index', routes.greetLang);
+app.post('/index/greeted', routes.indexes);
 app.get('/counter/:name', routes.count);
 app.post('/counter/:UrlUser', routes.count);
 

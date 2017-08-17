@@ -21,9 +21,9 @@ app.engine('handlebars', exphbs({
 
 app.set('view engine', 'handlebars');
 
-// app.get('/', function(req, res) {
-    // res.redirect('/index');
-// })
+app.get('/', function(req, res) {
+    res.redirect('/index');
+})
 app.get('/index/greeted', routes.indexes);
 app.get('/index', routes.greetLang);
 app.post('/index', routes.greetLang);

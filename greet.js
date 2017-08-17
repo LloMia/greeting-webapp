@@ -112,7 +112,7 @@ models.Name.find({},function(err, UrlUser) {
                 return done(err);
             }
              if (UrlUser) {
-              var  greetCount = "Hello, " + UrlUser.name + ". you've been greeeted " + UrlUser.timesGreeted + "time(s)"
+              var  greetCount = "Hello, " + UrlUser.name + ". you've been greeeted " + UrlUser.timesGreeted + " time(s)"
             }
             // console.log(greetCount);
             res.render('counter', {

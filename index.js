@@ -3,14 +3,12 @@ var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var app = express();
 var mongoose = require('mongoose');
-const Schema = mongoose.Schema();
+// const Schema = mongoose.Schema();
 const nameRoutes = require('./greet');
 const Models = require('./models');
 const models = Models(process.env.MONGO_DB_URL || 'mongodb://localhost/namesGreeted')
 const routes = nameRoutes(models);
-mongoose.connect('mongodb://localhost/namesGreeted', function(){
-  console.log('we are connected');
-});
+
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({

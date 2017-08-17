@@ -105,7 +105,6 @@ models.Name.find({},function(err, UrlUser) {
             name: req.params.name
 
         }, function(err, UrlUser) {
-          console.log('UrlUser', UrlUser);
 
 
             if (err) {

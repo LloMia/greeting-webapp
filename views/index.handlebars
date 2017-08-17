@@ -1,31 +1,55 @@
 <head>
-<link rel="stylesheet" href="/style.css">
     <meta charset="utf-8">
-    <title></title>
-</head>
+    <title>Hola!</title>
 
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index"><img src="download.png"></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/index">Home</a></li>
+            <li><a href="/index/greeted">Greeted Names</a></li>
+            <li><a href="/reset">reset</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
 
 <body>
-    <h1>GREETED NAMES</h1><br>
-    <a href="/index/greeted">greeted Names</a><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <form class="col-sm-8 centered" action="/index" method="post">
+                    <div class="form-group">
+                        <label for="name">Name :</label>
+                        <input class="form-control" type="text" name="name" placeholder="Type your name"><br><br>
+                    </div>
+                    <div class="container">
 
-  <br>  <form class="" action="/index" method="post">
-        <input type="text" name="name" placeholder="Type your name"><br><br>
-        <div id="radio">
-
-            <input type="radio" name="language" value="Setswana" id="Setswana">Setswana
-            <input type="radio" name="language" value="French" id="French">French
-            <input type="radio" name="language" value="english" id="english">English
-
-            <br><br><br><br><button type="submit" id="button">Greet</button>
+                        <form>
+                            <div class="radio">
+                                <label><input type="radio" name="language" value="Setswana" id="Setswana">Setswana</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="language" value="French" id="French">French</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="language" value="english" id="english">English</label>
+                            </div>
+                            <br><button type="submit" id="button">Greet</button>
+                          <br><br>  <p>{{msg}}</p>
+                        </form>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-4"></div>
         </div>
-
-    </form>
-
-
-    <p>{{msg}}</p>
-    
-
-
-
+    </div>
 </body>

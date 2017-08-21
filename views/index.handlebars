@@ -22,6 +22,14 @@
 <br>
 
 <body>
+  <div class="">
+    {{#if messages.error}}
+    <div class="error">
+
+      {{messages.error}}
+    </div>
+    {{/if}}
+  </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4"></div>
@@ -29,7 +37,7 @@
                 <form class="col-sm-8 centered" action="/index" method="post">
                     <div class="form-group">
                         <label for="name">Name :</label>
-                        <input class="form-control" type="text" name="name" placeholder="Type your name"><br><br>
+                        <input class="form-control" type="text" name="name" placeholder="Type your name" required=""><br><br>
                     </div>
                     <div class="container">
 
@@ -44,6 +52,7 @@
                                 <label><input type="radio" name="language" value="english" id="english">English</label>
                             </div>
                             <br><button type="submit" id="button">Greet</button>
+
                           <br><br>  <p>{{msg}}</p>
                         </form>
                     </div>

@@ -1,13 +1,15 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-var app = express();
+const session = require("express-session")
+const flash = require("express-flash");
 var mongoose = require('mongoose');
 // const Schema = mongoose.Schema();
 const nameRoutes = require('./greet');
 const Models = require('./models');
 const models = Models(process.env.MONGO_DB_URL || 'mongodb://localhost/namesGreeted')
 const routes = nameRoutes(models);
+var app = express();
 
 
 app.use(express.static('public'));
@@ -20,6 +22,16 @@ app.engine('handlebars', exphbs({
 }));
 
 app.set('view engine', 'handlebars');
+
+app.use(session({
+    secret: 'keyboard cat',
+    cookie: {
+        maxAge: 60000 * 30
+    }
+}))
+
+app.use(flash());
+
 
 app.get('/', function(req, res) {
     res.redirect('/index');

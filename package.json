@@ -21,7 +21,9 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^4.11.7"
+    "mongoose": "^4.11.7",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.3"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

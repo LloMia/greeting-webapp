@@ -4,11 +4,18 @@ module.exports = function(models) {
         var name = req.body.name;
         var language = req.body.language;
         var greetName = "";
+        var input = {
+            name: req.body.name
+        }
 
-
-
-
-        if (name) {
+        if (!input) {
+            req.flash('error', "Please type in your name!")
+            res.render('index')
+        } else if (!language) {
+            req.flash('error', 'select a prefered language!')
+            console.log('kkkk');
+            res.render('index')
+        } else {
             models.Name.findOne({
                 name: req.body.name
             }, function(err, user) {
@@ -77,24 +84,22 @@ module.exports = function(models) {
 
             })
 
-        } else {
-            res.render('index')
         }
 
     }
 
 
     const indexes = function(req, res) {
-models.Name.find({},function(err, UrlUser) {
-    if (err) {
-        return done(err);
-    }
+        models.Name.find({}, function(err, UrlUser) {
+            if (err) {
+                return done(err);
+            }
 
-        res.render('greeted', {
-            name: UrlUser
+            res.render('greeted', {
+                name: UrlUser
+            });
         });
-    });
-  }
+    }
 
     const count = function(req, res) {
 
@@ -110,8 +115,8 @@ models.Name.find({},function(err, UrlUser) {
             if (err) {
                 return done(err);
             }
-             if (UrlUser) {
-              var  greetCount = "Hello, " + UrlUser.name + ". you've been greeeted " + UrlUser.timesGreeted + " time(s)"
+            if (UrlUser) {
+                var greetCount = "Hello, " + UrlUser.name + ". you've been greeeted " + UrlUser.timesGreeted + " time(s)"
             }
             // console.log(greetCount);
             res.render('counter', {
@@ -122,15 +127,15 @@ models.Name.find({},function(err, UrlUser) {
     }
 
 
-    const clear = function(req, res){
-    models.Name.remove(function(err){
-      if (err) {
+    const clear = function(req, res) {
+        models.Name.remove(function(err) {
+            if (err) {
 
-        return done(err);
+                return done(err);
 
-      }
-      res.render('greeted')
-    })
+            }
+            res.render('greeted')
+        })
     }
     return {
         greetLang,

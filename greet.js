@@ -10,11 +10,11 @@ module.exports = function(models) {
 
         if (!input) {
             req.flash('error', "Please type in your name!")
-          
+            res.render('index')
         } else if (!language) {
             req.flash('error', 'select a prefered language!')
-
-
+            console.log('kkkk');
+            res.render('index')
         } else {
             models.Name.findOne({
                 name: req.body.name

@@ -20,16 +20,7 @@
     </div>
 </nav>
 <br>
-
 <body>
-  <div class="">
-    {{#if messages.error}}
-    <div class="error">
-
-      {{messages.error}}
-    </div>
-    {{/if}}
-  </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4"></div>
@@ -43,13 +34,13 @@
 
                         <form>
                             <div class="radio">
-                                <label><input type="radio" name="language" value="Setswana" id="Setswana">Setswana</label>
+                                <label><input type="radio" name="language" value="Setswana" id="Setswana"required="">Setswana</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="language" value="French" id="French">French</label>
+                                <label><input type="radio" name="language" value="French" id="French"required="">French</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="language" value="english" id="english">English</label>
+                                <label><input type="radio" name="language" value="english" id="english"required="">English</label>
                             </div>
                             <br><button type="submit" id="button">Greet</button>
 
